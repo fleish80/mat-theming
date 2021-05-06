@@ -1,4 +1,3 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
@@ -9,10 +8,46 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mcg: (
+  50 : #e5eae3,
+  100 : #becab8,
+  200 : #93a789,
+  300 : #68835a,
+  400 : #476936,
+  500 : #274e13,
+  600 : #234711,
+  700 : #1d3d0e,
+  800 : #17350b,
+  900 : #0e2506,
+  A100 : #7dff61,
+  A200 : #53ff2e,
+  A400 : #2cfa00,
+  A700 : #27e100,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$mat-theming-primary: mat-palette($mat-indigo);
+$mat-theming-primary: mat-palette($md-mcg);
 $mat-theming-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -43,8 +78,15 @@ $mat-theming-theme-dark: mat-dark-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: mat-color(map_get($mat-theming-theme, primary), darker);
+}
 
 .theme-dark {
   @include angular-material-theme($mat-theming-theme-dark);

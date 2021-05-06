@@ -1,7 +1,4 @@
-import {Component, ChangeDetectionStrategy, EventEmitter, Output} from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {MatSlideToggleChange} from '@angular/material/slide-toggle';
 
 @Component({
@@ -14,13 +11,7 @@ export class NavigationComponent {
 
   @Output() darkModeSWitched = new EventEmitter<boolean>();
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor() {}
 
   onDarkModeSwitched({checked}: MatSlideToggleChange): void {
     this.darkModeSWitched.emit(checked);
