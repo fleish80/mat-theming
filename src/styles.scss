@@ -91,6 +91,7 @@ $mat-theming-theme-dark: mat-dark-theme((
 @mixin custom-theme($theme) {
   @include angular-material-theme($theme);
   @include app-root-theme($theme);
+  @include app-root-typography($custom-typography);
 }
 
 html, body { height: 100%; }
